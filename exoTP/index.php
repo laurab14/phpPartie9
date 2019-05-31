@@ -21,6 +21,7 @@ if (isset($_POST['selectMonths']) && isset($_POST['selectYears'])) {
         <title>Calendrier</title>
     </head>
     <body>
+        <div class="container-fluid item-align-center"
         <form class="calendarYears" method="post">
             <select name="selectMonths">
                 <option disabled="Mois">Mois</option>
@@ -53,24 +54,24 @@ if (isset($_POST['selectMonths']) && isset($_POST['selectYears'])) {
             <p><?php
                 echo 'nombre de jour dans le mois ' . $calendarNumber . ' pour ' . $selMonths . ' de' . $selYears . ' et ' . $firstOfMonth . ' ' . $nmbDay;
                 ?></p>
-            <table class = "table table-bordered">
+            <table class="col-7 table-bordered">
                 <thead>
-                    <tr>
+                    <tr class="table-dark text-center col-1">
                         <?php foreach ($days as $day) {
                             ?>
-                            <th><?= $day ?></th>
+                            <th class="col-1"><?= $day ?></th>
                             <?php
                         }
                         ?>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="table-bordered">
                     <!--Je fais un boucle pour faire mes 6 TR-->
-                    <?php for ($i = 1; $i <= 6; $i++) { ?> 
-                        <tr>
+                    <?php for ($i = 1; $i < 7; $i++) { ?> 
+                    <tr scope="row" class="table-bordered col-1">
                             <!--Je fais une boucle pour faire mes 7 cases-->
                             <?php for ($j = 1; $j <= 7; $j++) { ?>
-                                <td scope="col-2">
+                                <td class="table-bordered">
                           <!--Nous allons définir le contenu des <td>-->
                                     <?php
                                     if ($firstOfMonth <= $caseNb && $caseNb <= ($nmbDay + $firstOfMonth - 1)) {
@@ -80,10 +81,12 @@ if (isset($_POST['selectMonths']) && isset($_POST['selectYears'])) {
                                     $caseNb++;
                                 } // de la boucle du TD 
                                 ?>
+                                </td>
                         </tr>
                     <?php } // Fin de la boucle du TR  ?>
                 </tbody>
             </table>
+        </div>
             <?php
         }
         ?>

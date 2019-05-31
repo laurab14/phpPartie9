@@ -20,11 +20,21 @@ $tps_restant = $noel - time(); // Différence entre Noël et maintenant.
             <div class="row" style="height:300px">
                 <div class="col-12 my-auto">
                     <h3 class="text-info"><?php
-                        $annee = date('Y');
-                        $date1 = mktime(0, 0, 0, 9, 16, 2016);
-                         $tps_restant = round((($date1 - $annee)/365)/3600);
+                        $annee = mktime();
+                        $date1 = mktime(0, 0, 0, 5, 16, 2016);
+                         $tps_restant = intval((($annee - $date1)/24)/3600);
                          echo $tps_restant;
                         ?> jours entre ce jour et le 16 Mars 2016.</h3>
+                    
+                    <?php 
+                    //calcul aussi possible et plus pratique !
+                    $currentDate = new DateTime("now");
+                    $prevDate = new DateTime("2016-05-16");
+                    $different = $currentDate->diff($prevDate);
+                    
+                    echo $different->days .' jours';  
+                    ?>
+                  
                 </div> 
             </div>
         </div>
